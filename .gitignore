@@ -1,51 +1,13 @@
-# Dependencies
+.github/workflows/test.yml
 node_modules/
-package-lock.json
-yarn.lock
-
-# Environment variables
+dist/
 .env
 .env.local
-.env.production
-
-# Hardhat
-contracts/cache/
-contracts/artifacts/
-contracts/coverage/
-contracts/typechain/
-contracts/typechain-types/
-contracts/.openzeppelin/
-
-# Hardhat files
-cache/
-artifacts/
-
-# Build outputs
-frontend/build/
-frontend/dist/
-backend/dist/
-
-# IDE
+coverage/
+*.log
+.DS_Store
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Testing
-coverage/
-.nyc_output/
-
-# Logs
-logs/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Deployment info
-deployment.json

@@ -1,76 +1,68 @@
 # API Documentation
 
-## Base URL
-```
-https://api.yourdomain.com/api
+## Authentication
+
+All API endpoints require authentication via API key.
+
+```bash
+Authorization: Bearer YOUR_API_KEY
 ```
 
-## Authentication
-No authentication required for public endpoints.
+## Base URL
+
+```
+https://api.nanbapay.com/v1
+```
 
 ## Endpoints
 
-### Create Payment
-```http
-POST /payment/create
-```
+### POST /payments
 
-**Request Body:**
+Create a new payment.
+
+**Request:**
 ```json
 {
-  "merchantAddress": "0x...",
-  "amount": 100,
-  "token": "0x...",
-  "metadata": "Order #123"
+  "amount": "100.00",
+  "currency": "ETH",
+  "recipient": "0x...",
+  "callback_url": "https://yoursite.com/webhook"
 }
 ```
 
 **Response:**
 ```json
 {
-  "success": true,
-  "paymentId": "uuid",
-  "paymentHash": "0x...",
-  "contractAddress": "0x..."
+  "payment_id": "pay_123",
+  "status": "pending",
+  "payment_url": "https://pay.nanbapay.com/pay_123"
 }
 ```
 
-### Verify Payment
-```http
-POST /payment/verify
-```
+### GET /payments/{id}
 
-**Request Body:**
-```json
-{
-  "paymentHash": "0x..."
-}
-```
+Get payment status.
 
 **Response:**
 ```json
 {
-  "success": true,
-  "payment": {
-    "payer": "0x...",
-    "merchant": "0x...",
-    "amount": "100",
-    "status": "completed"
-  }
+  "payment_id": "pay_123",
+  "status": "completed",
+  "amount": "100.00",
+  "tx_hash": "0x..."
 }
 ```
 
-### Get Merchant Balance
-```http
-GET /merchant/{address}/balance?token={tokenAddress}
-```
+## Webhooks
 
-**Response:**
+Webhooks are sent to your callback URL when payment status changes.
+
+**Payload:**
 ```json
 {
-  "merchant": "0x...",
-  "token": "ETH",
-  "balance": "1.5"
+  "event": "payment.completed",
+  "payment_id": "pay_123",
+  "data": { ... }
 }
 ```
 
@@ -79,5 +71,6 @@ GET /merchant/{address}/balance?token={tokenAddress}
 | Code | Description |
 |------|-------------|
 | 400 | Bad Request |
-| 404 | Payment not found |
-| 500 | Internal server error |
+| 401 | Unauthorized |
+| 404 | Payment Not Found |
+| 500 | Internal Server Error |
