@@ -2,6 +2,10 @@
 
 🚀 **A complete payment gateway solution for the Base ecosystem**
 
+[![CI/CD](https://github.com/gnanam1990/base-payment-gateway/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/gnanam1990/base-payment-gateway/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Base](https://img.shields.io/badge/Base-Sepolia-blue.svg)](https://base.org)
+
 Built by **Nanba** for **k Я Λ T 0 Ƨ**
 
 ---
