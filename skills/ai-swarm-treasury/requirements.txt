@@ -1,0 +1,4 @@
+openrouter
+requests
+python-dotenv
+asyncio
