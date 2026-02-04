@@ -1,13 +1,19 @@
-.github/workflows/test.yml
-node_modules/
-dist/
-.env
-.env.local
-coverage/
-*.log
 .DS_Store
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+node_modules
+.env
+coverage
+coverage.json
+typechain
+typechain-types
+
+# Hardhat files
+cache
+artifacts
+
+# IDE
+.vscode
+.idea
+
+# Build
+dist
+build
